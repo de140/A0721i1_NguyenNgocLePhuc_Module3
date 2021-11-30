@@ -1,6 +1,6 @@
 -- Tạo database
 create database student_management;
-
+use student_management;
 -- Tạo table student
 CREATE TABLE student (
     student_id INT  AUTO_INCREMENT PRIMARY KEY,
