@@ -1,5 +1,5 @@
 -- Tạo csdl quản lý bán hàng
-create database sale_management;
+create database sale_management1;
 
 -- Tạo bảng khách hàng
 CREATE TABLE customer (
