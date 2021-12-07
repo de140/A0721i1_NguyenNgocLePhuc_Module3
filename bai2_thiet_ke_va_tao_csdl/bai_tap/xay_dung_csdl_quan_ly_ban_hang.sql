@@ -1,6 +1,6 @@
 -- Tạo csdl quản lý bán hàng
 create database sale_management1;
-
+drop database sale_management1;
 -- Tạo bảng khách hàng
 CREATE TABLE customer (
     customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -26,13 +26,14 @@ CREATE TABLE product (
 );
 -- Tạo bảng chi tiết hóa đơn
 CREATE TABLE order_detail (
-    order_id INT NOT NULL PRIMARY KEY,
+    order_id INT NOT NULL,
     product_id INT NOT NULL,
     quantity INT NOT NULL,
+    primary key(order_id,product_id),
     FOREIGN KEY (order_id)
-        REFERENCES orders (order_id),
+        REFERENCES orders(order_id),
     FOREIGN KEY (product_id)
-        REFERENCES product (product_id)
+        REFERENCES product(product_id)
 );
 
 

@@ -212,3 +212,19 @@ insert into hop_dong_chi_tiet(so_luong,ma_hop_dong,ma_dich_vu_di_kem) values
 (1,1,3),
 (2,1,2),
 (2,12,2);
+
+-- 2.	Hiển thị thông tin của tất cả nhân viên có trong hệ thống có tên bắt đầu là một trong các ký tự “H”, “T” hoặc “K” và có tối đa 15 kí tự.
+select * ,length(ho_ten) as soluongkituten
+from nhan_vien
+where (ho_ten like 'H%') or  (ho_ten like 'T%') or (ho_ten like 'K%')
+having soluongkituten<=15;
+
+-- 3.	Hiển thị thông tin của tất cả khách hàng có độ tuổi từ 18 đến 50 tuổi và có địa chỉ ở “Đà Nẵng” hoặc “Quảng Trị”.
+select * from khach_hang where (51*30*365) > (curdate()-ngay_sinh) and (curdate()-ngay_sinh) >(18*30*365) and (dia_chi like '%Đà Nẵng%' or dia_chi like '%Quảng Trị%');
+-- 4.	Đếm xem tương ứng với mỗi khách hàng đã từng đặt phòng bao nhiêu lần.
+-- Kết quả hiển thị được sắp xếp tăng dần theo số lần đặt phòng của khách hàng. 
+-- Chỉ đếm những khách hàng nào có Tên loại khách hàng là “Diamond”.
+select khach_hang.ma_khach_hang,khach_hang.ho_ten, count(hop_dong.ma_hop_dong) as so_lan_dat_phong from khach_hang inner join hop_dong on khach_hang.ma_khach_hang = hop_dong.ma_khach_hang where khach_hang.ma_loai_khach = 1
+group by khach_hang.ma_khach_hang order by so_lan_dat_phong;
+
+-- 5
