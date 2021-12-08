@@ -314,6 +314,39 @@ inner join dich_vu on hop_dong.ma_dich_vu=dich_vu.ma_dich_vu
 inner join loai_dich_vu on dich_vu.ma_loai_dich_vu=loai_dich_vu.ma_loai_dich_vu
 group by hop_dong_chi_tiet.ma_dich_vu_di_kem
 having so_lan_su_dung=1 order by hop_dong.ma_hop_dong;
+-- 15.	Hiển thi thông tin của tất cả nhân viên bao gồm ma_nhan_vien, ho_ten, ten_trinh_do, ten_bo_phan, so_dien_thoai, dia_chi mới chỉ lập được tối đa 3 hợp đồng từ năm 2020 đến 2021.
+select nhan_vien.ma_nhan_vien, nhan_vien.ho_ten, trinh_do.ten_trinh_do, bo_phan.ten_bo_phan, nhan_vien.so_dien_thoai, nhan_vien.dia_chi
+from nhan_vien 
+inner join trinh_do on nhan_vien.ma_trinh_do=trinh_do.ma_trinh_do
+inner join bo_phan on nhan_vien.ma_bo_phan=bo_phan.ma_bo_phan
+inner join hop_dong on hop_dong.ma_nhan_vien=nhan_vien.ma_nhan_vien
+where year(hop_dong.ngay_lam_hop_dong) between "2020-01-01" and "2021-01-01"
+group by hop_dong.ma_nhan_vien
+having count(hop_dong.ma_nhan_vien)<3
+order by ma_nhan_vien;
+
+-- 16.	Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2019 đến năm 2021.
+delete from nhan_vien
+where nhan_vien.ma_nhan_vien not in (select ma_nhan_vien from hop_dong where year(ngay_lam_hop_dong) between "2019" and "2021");
+
+-- 17.Cập nhật thông tin những khách hàng có ten_loai_khach từ Platinum lên Diamond, chỉ cập nhật những khách hàng đã từng đặt phòng với Tổng Tiền thanh toán trong năm 2021 là lớn hơn 10.000.000 VNĐ.
+update khach_hang 
+inner join hop_dong on khach_hang.ma_khach_hang=hop_dong.ma_khach_hang
+inner join dich_vu on hop_dong=ma_dich_vu.ma_dich_vu
+inner join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_hop_dong=hop_dong.ma_hop_dong
+inner join dich_vu_di_kem on dich_vu_di_kem.ma_dich_vu_di_kem=hop_dong_chi_tiet.ma_dich_vu_di_kem
+set ma_loai_khach=1
+where (dich_vu.chi_phi_thue+(hop_dong_chi_tiet.so_luong*dich_vu_di_kem.gia))>10000000 and year(ngay_lam_hop_dong)=2021;
+
+-- 18.Xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng).
+delete from khach_hang
+where khach_hang.ma_khach_hang in (select ma_khach_hang from hop_dong where ngay_lam_hop_dong< "2021-01-01");
+
+-- 19.Cập nhật giá cho các dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2020 lên gấp đôi.
+
+
+
+
 
 
 
