@@ -308,7 +308,7 @@ order by so_luong_dich_vu_di_kem desc ;
 -- Thông tin hiển thị bao gồm ma_hop_dong, ten_loai_dich_vu, ten_dich_vu_di_kem, so_lan_su_dung (được tính dựa trên việc count các ma_dich_vu_di_kem).
 select hop_dong.ma_hop_dong, loai_dich_vu.ten_loai_dich_vu, dich_vu_di_kem.ten_dich_vu_di_kem, count(hop_dong_chi_tiet.ma_dich_vu_di_kem) as so_lan_su_dung
 from hop_dong
-inner join hop_dong_chi_tiet as hop_dong_chi_tiet on hop_dong.ma_hop_dong=hop_dong_chi_tiet.ma_hop_dong
+inner join hop_dong_chi_tiet on hop_dong.ma_hop_dong=hop_dong_chi_tiet.ma_hop_dong
 inner join dich_vu_di_kem on hop_dong_chi_tiet.ma_dich_vu_di_kem=dich_vu_di_kem.ma_dich_vu_di_kem
 inner join dich_vu on hop_dong.ma_dich_vu=dich_vu.ma_dich_vu
 inner join loai_dich_vu on dich_vu.ma_loai_dich_vu=loai_dich_vu.ma_loai_dich_vu
@@ -330,6 +330,7 @@ delete from nhan_vien
 where nhan_vien.ma_nhan_vien not in (select ma_nhan_vien from hop_dong where year(ngay_lam_hop_dong) between "2019" and "2021");
 
 -- 17.Cập nhật thông tin những khách hàng có ten_loai_khach từ Platinum lên Diamond, chỉ cập nhật những khách hàng đã từng đặt phòng với Tổng Tiền thanh toán trong năm 2021 là lớn hơn 10.000.000 VNĐ.
+-- chưa đúng
 update khach_hang 
 inner join hop_dong on khach_hang.ma_khach_hang=hop_dong.ma_khach_hang
 inner join dich_vu on hop_dong=ma_dich_vu.ma_dich_vu
