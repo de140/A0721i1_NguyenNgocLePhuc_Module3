@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .col-1 {
+        width: 8.33%;
+    }
+    
+    .col-2 {
+        width: 16.66%;
+    }
+    
+    .col-3 {
+        width: 25%;
+    }
+    
+    .col-4 {
+        width: 33.33%;
+    }
+    
+    .col-5 {
+        width: 41.66%;
+    }
+    
+    .col-6 {
+        width: 50%;
+    }
+    
+    .col-7 {
+        width: 58.33%;
+    }
+    
+    .col-8 {
+        width: 66.66%;
+    }
+    
+    .col-9 {
+        width: 75%;
+    }
+    
+    .col-10 {
+        width: 83.33%;
+    }
+    
+    .col-11 {
+        width: 91.66%;
+    }
+    
+    .col-12 {
+        width: 100%;
+    }
+    
+    .row::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    
+    .navbar {
+        clear: both;
+        background: #333333;
+        top: 0;
+        width: 100%;
+        position: relative;
+        padding: 10px 0;
+    }
+    
+    .navbar a {
+        text-decoration: none;
+        color: white;
+        text-align: center;
+        font-size: 17px;
+        padding: 14px 16px;
+    }
+    
+    .navbar a:hover {
+        background: black;
+    }
+    
+    .left {
+        width: 15%;
+        float: left;
+        background-color: whitesmoke;
+        border: 1px solid #CDCDCD;
+        padding: 10px;
+        min-height: 652px;
+    }
+    
+    .left p {
+        text-align: center;
+        color: blue;
+        text-decoration: none;
+    }
+    
+    .content {
+        padding: 10px 0 10px 10px;
+        width: 65%;
+        float: left;
+    }
+    
+    .right {
+        width: 15%;
+        float: right;
+        background-color: whitesmoke;
+        border: 1px solid #CDCDCD;
+        padding: 10px;
+        min-height: 652px;
+    }
+    
+    .right p {
+        border: 1px solid #CDCDCD;
+        padding: 30px 0 30px 10px;
+        text-align: center;
+    }
+    
+    .footer {
+        background: #333333;
+        color: white;
+        clear: both;
+        padding: 5px 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    #main {
+        padding: 16px;
+        margin-top: 30px;
+    }
+    
+    @media screen and (max-width: 768px) {
+        [class*="col-"] {
+            width: 100%;
+        }
+    }
+</style>
+
+<body>
+    <div class="row navbar">
+        <div class="col-12">
+            <a href="#logo">Logo</a>
+            <a href="#home">Home</a>
+            <a href="#news">About</a>
+            <a href="#contact">Project</a>
+            <a href="#about">Contact</a>
+            <a href="" style="float: right;padding:0 10px">Login</a>
+        </div>
+    </div>
+    <div class="row main">
+        <div class="left col-2">
+            <div class="row">
+                <div class="col-12">
+                    <p><a href="">link</a></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <p><a href="">link</a></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <p><a href="">link</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="content col-8">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Welcome</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, delectus ipsum optio quam qui sapiente tempore totam voluptatem? Amet, dolor dolores ea facilis fugiat magnam provident quam saepe velit vero?</p>
+                    <hr>
+                    <h2>Test</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam beatae corporis, cum distinctio eaque et ex inventore iste minima nihil officiis provident quas quis temporibus ullam velit voluptas voluptatibus voluptatum!
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <div class="right col-2">
+            <div class="row">
+                <div class="col-12">
+                    <p>ADS</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <p>ADS</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row footer">
+        <div class="col-12">
+            <p>&copy; codegym</p>
+        </div>
+    </div>
+</body>
+
+</html>
