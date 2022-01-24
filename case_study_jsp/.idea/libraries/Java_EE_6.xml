@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Java EE 6">
+    <CLASSES>
+      <root url="jar://E:/FPTU/PRJ/Software/javax.servlet.jsp.jstl-1.2.4.jar!/" />
+      <root url="jar://E:/FPTU/PRJ/Software/javax.servlet.jsp.jstl-api-1.2.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
